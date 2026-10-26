@@ -51,6 +51,29 @@ structural checks does not establish how reliably an agent follows instructions.
 Update this README when repository usage or layout conventions change; adding a
 skill or topic reference does not require a README edit.
 
+## Markdown quality
+
+Markdown is formatted with Prettier 3.5.3 using `proseWrap: "always"` and
+checked with markdownlint-cli2 0.17.2. Run these commands from the repository
+root:
+
+```text
+npx --yes prettier@3.5.3 --check "*.md" ".agents/**/*.md"
+npx --yes markdownlint-cli2@0.17.2 "*.md" ".agents/**/*.md"
+```
+
+To apply the formatter:
+
+```text
+npx --yes prettier@3.5.3 --write "*.md" ".agents/**/*.md"
+```
+
+On Windows PowerShell systems that block `npx.ps1`, use `npx.cmd` in place of
+`npx`. The configuration keeps the standard lint rules except line-length,
+context-dependent heading structure, inline template HTML, emphasis headings,
+untyped fences, and first-line-heading checks; Prettier or the repository's
+document structure governs those cases.
+
 ## License
 
 [MIT](LICENSE), copyright 2026 Jacek Lipiec. Linked third-party articles remain
