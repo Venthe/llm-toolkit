@@ -133,4 +133,4 @@ For each question, select **Yes** or **No** based on the completed diagram. Do n
 
 ## Reference files
 
-Read `references/PlantUML_Documentation_Reference.md` for an offline quick reference and links to the official PlantUML documentation. Use the official guide for detailed or version-specific syntax questions.
+Read [PlantUML Documentation Reference](references/PlantUML_Documentation_Reference.md) for an offline quick reference and links to the official PlantUML documentation. Use the official guide for detailed or version-specific syntax questions.
