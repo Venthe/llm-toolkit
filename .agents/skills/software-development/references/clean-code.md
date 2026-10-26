@@ -16,6 +16,11 @@ Do not infer responsibility from class length alone. A long cohesive method can 
 
 Prefer straightforward control flow. Look for deep nesting, unnecessary branching, boolean-state combinations, temporal coupling, duplicated conditionals, excessive callbacks, and abstractions that make the execution path harder to follow.
 
+When conditionals select behavior that belongs to distinct domain variants,
+consider polymorphism or composition. Keep a conditional when it is the clearer
+representation of a small, stable decision; a pattern name alone is not evidence
+for a hierarchy.
+
 ### Encapsulation
 
 State invariants should be protected at the boundary that owns them. Avoid exposing mutable state or requiring callers to perform sequences of operations to maintain an object's validity.
@@ -29,6 +34,12 @@ Prefer composition when it produces a simpler dependency structure. Use polymorp
 ### Coupling and cohesion
 
 Identify dependencies that make changes ripple unnecessarily. Prefer dependencies on stable concepts over volatile implementation details. Distinguish useful coupling required by the domain from accidental coupling caused by framework, persistence, transport, or utility details.
+
+Apply the Law of Demeter as a coupling check: prefer asking an immediate
+collaborator to perform its responsibility over traversing its collaborators'
+internals. A test that requires elaborate chained mocks can reveal a boundary
+problem, but fluent APIs and genuine aggregate queries are not defects by
+themselves.
 
 ### DRY means duplicated knowledge, not duplicated text
 
@@ -47,6 +58,20 @@ Check whether errors are handled at the appropriate boundary, whether exceptions
 ### Side effects and state
 
 Make side effects visible and localized. Look for hidden I/O, hidden mutation, global state, ambient context, order-dependent operations, and non-obvious lifecycle requirements.
+
+Use command-query separation where it clarifies a local API: a query reports
+information without mutation; a command changes state and does not also return
+domain information. A deliberate exception needs an explicit contract. Treat
+CQRS as an architectural separation only when distinct read and write models
+solve an observed scaling, security, or complexity need.
+
+### Data clumps
+
+When the same related values repeatedly travel together or require coordinated
+validation—such as a start and end date—consider a domain value object such as
+`DatePeriod`. Introduce it when it gives the relationship a name, protects an
+invariant, or removes duplicated knowledge; do not wrap incidental parameters
+mechanically.
 
 ### Tests as design evidence
 

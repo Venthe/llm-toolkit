@@ -15,6 +15,14 @@ Use the project's existing toolchain. These levels are options, not a checklist
 requiring every kind of test for every change. Test count and line coverage alone
 do not establish confidence. Avoid introducing a test library for stylistic taste.
 
+Separate validation from verification when reporting a failure. Validation asks
+whether the requirement represents the right behavior for the user or operating
+context; verification asks whether the implementation satisfies that understood
+requirement. A correctly sorted output can verify an ascending-sort contract,
+while deciding whether ascending order was the required outcome is validation.
+When either is uncertain, record the assumption instead of presenting it as a
+software defect.
+
 ## Design regression protection
 
 For a bug fix, reproduce the failure when practical, then verify the corrected
@@ -27,6 +35,11 @@ Assert outputs, state transitions, or externally meaningful interactions. Avoid
 tests coupled to private methods, incidental call order, internal representation,
 or exact prose unless those details are contractual. Small duplicated fixtures
 can be clearer than an opaque shared test framework.
+
+Test performance when latency, throughput, resource consumption, or capacity is
+an explicit requirement or a demonstrated risk. Define the workload, environment,
+metric, and acceptable threshold; do not treat a fast local run as evidence of a
+production performance contract.
 
 Use doubles at meaningful boundaries. A mock returning the value just configured
 is not evidence that integration works. Verify real adapters where integration

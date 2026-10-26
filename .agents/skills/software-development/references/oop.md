@@ -10,9 +10,21 @@ protect valid states; callers should not need to remember an undocumented sequen
 of setters. Use value objects when they make a meaningful domain distinction or
 centralize validation, not to wrap every primitive mechanically.
 
+Avoid both primitive obsession and message obsession. Replace primitives with a
+domain type when it names a real concept, makes invalid states harder to express,
+or centralizes its rules; do not create a type merely to avoid a primitive.
+Likewise, keep behavior with the concept that owns it, while avoiding chains of
+small forwarding objects that obscure useful behavior.
+
 Keep mutable state private and consider defensive copies or immutable values at
 ownership boundaries. Data transfer objects can appropriately carry data without
 business behavior; distinguish them from objects responsible for domain rules.
+
+State preconditions, postconditions, and invariants at the boundary that owns
+them. Enforce them through types, constructors, operations, or explicit errors
+as appropriate; Design by Contract does not require a particular assertion
+library. Objects should either create valid collaborators or own meaningful
+business behavior, except for deliberately simple transport or persistence data.
 
 ## Contracts and variation
 

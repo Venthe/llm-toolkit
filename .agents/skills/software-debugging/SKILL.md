@@ -12,7 +12,9 @@ is known, suspected, and still missing; a plausible code path is not a proven ca
 
 1. Establish expected and observed behavior, affected version/environment, time
    window, scope, and a failing input or report. Preserve existing work and avoid
-   changing several variables at once.
+   changing several variables at once. Distinguish a validation question (whether
+   the intended behavior is right) from a verification question (whether the
+   implementation meets that behavior) before diagnosing the implementation.
 2. Discover the relevant exposed tools and evidence sources for the next question.
    These may include MCP capabilities, debugger access, logs, traces, metrics,
    data sources, CI artifacts, and project skills. Start with local evidence and
