@@ -10,7 +10,8 @@ For each finding, include:
 - Location in the reviewed revision: path and line or symbol.
 - Observation and the triggering condition, dependency, or invariant.
 - Concrete consequence for behavior, maintenance, or feedback.
-- Confidence and missing context, including plausible intentional design choices.
+- Confidence and missing context, including plausible intentional design
+  choices.
 - A bounded future candidate when helpful, without implementing it.
 
 Order by practical impact. Distinguish demonstrated problems from potential
@@ -20,15 +21,16 @@ findings from multiple lenses.
 Example:
 
 > `OrderService.load` imports the concrete SQL repository. Changing persistence
-> requires changing application policy code. A persistence boundary is a possible
-> future candidate if database independence is an intended property; the current
-> repository does not establish that requirement.
+> requires changing application policy code. A persistence boundary is a
+> possible future candidate if database independence is an intended property;
+> the current repository does not establish that requirement.
 
 ## Verification
 
 Record exact commands and outcomes. Separate passed checks, failed checks,
 environmental blockers, and checks not run. Report which revision was executed.
-Do not equate test presence with coverage, or a toolchain failure with a code bug.
+Do not equate test presence with coverage, or a toolchain failure with a code
+bug.
 
 ## Combined result
 

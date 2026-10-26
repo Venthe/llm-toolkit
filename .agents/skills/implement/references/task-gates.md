@@ -28,9 +28,9 @@ For a behavior change:
 5. Refactor only while the relevant tests stay green; rerun them afterward.
 
 For non-behavioral steps, such as documentation or mechanical configuration,
-choose an appropriate direct check. Do not add artificial tests to claim TDD.
-If no viable automated test exists, document the closest available evidence and
-the gap.
+choose an appropriate direct check. Do not add artificial tests to claim TDD. If
+no viable automated test exists, document the closest available evidence and the
+gap.
 
 ## Quality gate and commit
 
@@ -40,8 +40,8 @@ After the step's tests pass:
   do not auto-fix unrelated files.
 - Review the diff against the step's acceptance outcome and inspect whitespace,
   generated files, secrets, and scope.
-- Apply the existing development review workflow at a level proportionate to
-  the change. A review can be a self-review when no independent reviewer tool is
+- Apply the existing development review workflow at a level proportionate to the
+  change. A review can be a self-review when no independent reviewer tool is
   available; state that limitation rather than claiming independent review.
 - Resolve findings and rerun the checks affected by those changes.
 - Stage explicit paths or hunks for this coherent step, inspect the staged diff,

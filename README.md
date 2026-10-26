@@ -1,15 +1,16 @@
 # LLM Toolkit
 
-Reusable instructions and skills for coding agents. The toolkit captures practical
-engineering workflows as Markdown with YAML metadata and optional supporting
-resources. There is no application or background service to run.
+Reusable instructions and skills for coding agents. The toolkit captures
+practical engineering workflows as Markdown with YAML metadata and optional
+supporting resources. There is no application or background service to run.
 
 ## Navigate the repository
 
-Start with [AGENTS.md](AGENTS.md), then browse [.agents/skills/](.agents/skills/).
-Each directory's `SKILL.md` describes its purpose, when to use it, and how to load
-supporting material. The directory layout is the source of truth for available
-skills; this README intentionally does not duplicate that inventory.
+Start with [AGENTS.md](AGENTS.md), then browse
+[.agents/skills/](.agents/skills/). Each directory's `SKILL.md` describes its
+purpose, when to use it, and how to load supporting material. The directory
+layout is the source of truth for available skills; this README intentionally
+does not duplicate that inventory.
 
 ```text
 .agents/skills/<skill-name>/
@@ -33,10 +34,10 @@ Merge relevant operating guidance into the project's existing `AGENTS.md`;
 preserve project-specific instructions. Include [LICENSE](LICENSE) when
 redistributing the toolkit or substantial portions of it.
 
-Discovery and invocation syntax depend on the runtime. An agent without automatic
-skill discovery can read an entrypoint by path when instructed. Skills provide
-guidance within the task's authorization; drafting or reviewing does not imply
-permission to commit, publish, or implement a proposal.
+Discovery and invocation syntax depend on the runtime. An agent without
+automatic skill discovery can read an entrypoint by path when instructed. Skills
+provide guidance within the task's authorization; drafting or reviewing does not
+imply permission to commit, publish, or implement a proposal.
 
 ## Maintain and validate
 
@@ -70,9 +71,9 @@ npx --yes prettier@3.5.3 --write "*.md" ".agents/**/*.md"
 
 On Windows PowerShell systems that block `npx.ps1`, use `npx.cmd` in place of
 `npx`. The configuration keeps the standard lint rules except line-length,
-context-dependent heading structure, inline template HTML, emphasis headings,
-untyped fences, and first-line-heading checks; Prettier or the repository's
-document structure governs those cases.
+context-dependent heading structure, list-marker spacing, inline template HTML,
+emphasis headings, untyped fences, and first-line-heading checks; Prettier or
+the repository's document structure governs those cases.
 
 ## License
 

@@ -43,10 +43,11 @@
 ## Maintain this toolkit
 
 - Keep reusable skills in `.agents/skills/<name>/SKILL.md`. Use the
-  [skill-writing skill](.agents/skills/skill-writing/SKILL.md) when changing them.
+  [skill-writing skill](.agents/skills/skill-writing/SKILL.md) when changing
+  them.
 - Keep entrypoints focused on selection, core workflow, constraints, and output.
-  Put conditional detail in `references/`, executable helpers in `scripts/`,
-  and output templates in `assets/`. Link resources with explicit load conditions.
+  Put conditional detail in `references/`, executable helpers in `scripts/`, and
+  output templates in `assets/`. Link resources with explicit load conditions.
 - Keep skills portable: avoid machine-specific paths and assumed tools. Document
   actual script dependencies and use the target repository's conventions.
 - Preserve the diagnostic scope of review requests. Changes to this toolkit are
@@ -54,5 +55,5 @@
 - After skill or resource edits, run the documented validator and inspect the
   diff. For script changes, run relevant behavioral checks. Report what ran,
   what failed or remains unverified, and any residual limitations.
-- Keep skill discovery in the directory layout and entrypoint descriptions.
-  Do not maintain a README catalog; update it only for usage or layout changes.
+- Keep skill discovery in the directory layout and entrypoint descriptions. Do
+  not maintain a README catalog; update it only for usage or layout changes.

@@ -14,7 +14,8 @@ Proposed
 
 ## Alternatives considered
 
-<Credible options and relevant tradeoffs; omit if no alternatives are evidenced.>
+<Credible options and relevant tradeoffs; omit if no alternatives are
+evidenced.>
 
 ## Consequences
 

@@ -36,8 +36,9 @@ For this collection, useful cases include:
   failure without silently switching engines or deleting resources.
 - Review code through the combined development skill: remain in diagnostic mode
   unless fixes were requested; load only references relevant to the change.
-- Review with verification: permit known temporary/build outputs, preserve source
-  and snapshots, and do not silently switch an inspection-only request to execution.
+- Review with verification: permit known temporary/build outputs, preserve
+  source and snapshots, and do not silently switch an inspection-only request to
+  execution.
 - Prepare an implementation ticket: preserve the supplied DoD hierarchy and use
   observable acceptance criteria without inventing stakeholder approval.
 - Recommend Kubernetes improvements: distinguish probe and disruption semantics,
@@ -50,5 +51,6 @@ observed outcomes, and limitations. Do not claim behavioral validation merely
 because frontmatter and links pass. Refine demonstrated failures instead of
 adding universal rules for speculative cases.
 
-See [Agent Skills best practices](https://agentskills.io/skill-creation/best-practices)
+See
+[Agent Skills best practices](https://agentskills.io/skill-creation/best-practices)
 for further guidance on scope, context use, and iteration against real tasks.

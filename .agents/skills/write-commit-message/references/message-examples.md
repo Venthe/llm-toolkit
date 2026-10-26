@@ -1,6 +1,7 @@
 # Message examples and review checks
 
-Use examples as wording guidance, never as a source of invented rationale or IDs.
+Use examples as wording guidance, never as a source of invented rationale or
+IDs.
 
 ## Subject
 
@@ -27,9 +28,10 @@ sessions fail consistently and avoid an unnecessary downstream request.
 ```
 
 A simple documentation correction may need only a subject. A body should add
-motivation, constraints, or consequences rather than narrating every changed line.
-Keep known issue references and required trailers after the body; never fabricate
-them. Preserve deliberate code, URLs, and structured formatting when wrapping.
+motivation, constraints, or consequences rather than narrating every changed
+line. Keep known issue references and required trailers after the body; never
+fabricate them. Preserve deliberate code, URLs, and structured formatting when
+wrapping.
 
 ## Reviewing an existing message
 

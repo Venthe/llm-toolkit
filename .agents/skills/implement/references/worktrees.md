@@ -6,8 +6,9 @@ optional flow ends by merging the completed task branch back into the branch
 that was current when the flow started.
 
 Use the repository's documented worktree convention when present. The
-version-control skill's [Git workflow](../../git-version-control/references/git-workflow.md)
-and [review targets](../../git-version-control/references/review-targets.md) govern
+version-control skill's
+[Git workflow](../../git-version-control/references/git-workflow.md) and
+[review targets](../../git-version-control/references/review-targets.md) govern
 state inspection and preservation.
 
 ## Before creation
@@ -21,9 +22,9 @@ state inspection and preservation.
    branch. Do not assume `main`, fetch, or switch the primary checkout as a side
    effect. Fetch only when a current remote base is needed and permitted.
 3. Select a descriptive task branch based on that merge-back branch and a
-   worktree location outside ignored or
-   generated directories. Check for an existing branch or path collision first.
-   Never remove or overwrite an existing worktree to make room.
+   worktree location outside ignored or generated directories. Check for an
+   existing branch or path collision first. Never remove or overwrite an
+   existing worktree to make room.
 4. Create the worktree using the installed Git version's supported command and
    repository conventions. Verify the path, branch, and clean starting state.
    The primary worktree's pre-existing changes must remain untouched.
@@ -33,8 +34,8 @@ state inspection and preservation.
 Read project setup instructions and run only required, scoped setup steps in the
 new worktree. Inspect dependency-install scripts and lifecycle effects before
 running them. Establish a baseline with the repository's documented focused
-tests or checks when feasible. Record existing failures as baseline failures;
-do not attribute them to task changes.
+tests or checks when feasible. Record existing failures as baseline failures; do
+not attribute them to task changes.
 
 ## Merge back and hand off
 
@@ -50,8 +51,8 @@ branch back into the recorded merge-back branch in the primary checkout:
    traceable. Review the resulting merge state and run checks affected by the
    integration.
 3. If the branch changed, the merge is unsafe, or a conflict cannot be resolved
-   without touching unrelated user work, stop and report the concrete state.
-   Do not abort, reset, stash, or force a merge merely to complete the flow.
+   without touching unrelated user work, stop and report the concrete state. Do
+   not abort, reset, stash, or force a merge merely to complete the flow.
 4. Keep the auxiliary worktree and task branch available after the merge unless
    the user separately requests cleanup. Do not push or publish.
 

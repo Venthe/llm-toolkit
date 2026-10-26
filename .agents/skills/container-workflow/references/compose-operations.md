@@ -7,9 +7,11 @@ only after checking support. Do not translate commands blindly.
 ## Configuration and diagnosis
 
 - Inspect existing wrappers and preserve their compose files, environment files,
-  profiles, project name, and working directory. These affect resource selection.
-- Use a quiet validation mode when supported, such as `docker compose config --quiet`.
-  Full resolved configuration can reveal secret environment values.
+  profiles, project name, and working directory. These affect resource
+  selection.
+- Use a quiet validation mode when supported, such as
+  `docker compose config --quiet`. Full resolved configuration can reveal secret
+  environment values.
 - Inspect only the target services with supported `ps` and bounded `logs`
   commands. Redact credentials; avoid dumping complete inspection output.
 - Identify whether failure occurs during config resolution, build, startup, or

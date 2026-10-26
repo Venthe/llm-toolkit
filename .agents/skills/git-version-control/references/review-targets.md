@@ -30,14 +30,15 @@ git show --no-patch --format=fuller <resolved-sha>
 git cat-file -p <resolved-sha>
 ```
 
-Use the resolved SHA in subsequent commands. Inspect the commit object's `parent`
-headers. This distinguishes a real root from a shallow boundary with unavailable
-parent objects.
+Use the resolved SHA in subsequent commands. Inspect the commit object's
+`parent` headers. This distinguishes a real root from a shallow boundary with
+unavailable parent objects.
 
 - **One or more parents:** verify the first parent object exists, then use
-  `git diff --no-ext-diff --no-textconv <parent-sha> <resolved-sha>`. For a merge,
-  state explicitly that this is the first-parent comparison; a default combined
-  merge diff can omit relevant changes. Use another baseline when requested.
+  `git diff --no-ext-diff --no-textconv <parent-sha> <resolved-sha>`. For a
+  merge, state explicitly that this is the first-parent comparison; a default
+  combined merge diff can omit relevant changes. Use another baseline when
+  requested.
 - **No parent headers:** use
   `git diff-tree --root --no-commit-id -r -p --no-ext-diff --no-textconv <resolved-sha>`.
   This reviews initial additions without assuming a parent or a hash algorithm.

@@ -7,9 +7,9 @@ environment, input, and frequency. Minimize the reproduction while keeping the
 failure; label a reduced case that only resembles it as a hypothesis aid.
 
 For intermittent failures, record both failing and passing conditions and bound
-repetition. Investigate timing, shared state, load, dependency failures, and test
-ordering where evidence points there. A successful retry does not explain the
-failure. Do not overwrite the useful failing sample with a later success.
+repetition. Investigate timing, shared state, load, dependency failures, and
+test ordering where evidence points there. A successful retry does not explain
+the failure. Do not overwrite the useful failing sample with a later success.
 
 ## Narrow the explanation
 
@@ -20,16 +20,17 @@ before understanding the violated contract.
 
 Example: a request times out. Possible causes include a blocked dependency,
 connection-pool exhaustion, or a deadline already expired before dispatch. A
-correlated trace plus pool/deadline state can distinguish these; increasing every
-timeout cannot establish which cause occurred.
+correlated trace plus pool/deadline state can distinguish these; increasing
+every timeout cannot establish which cause occurred.
 
 Follow the failing data through boundaries and compare actual state with the
 contract. Use stack traces and debugger observations to identify the first point
 where behavior diverges. The last exception may be a downstream consequence.
 
-Use history or bisection when a regression interval and reliable reproducer exist.
-Preserve the worktree, use isolated checkouts when needed, and account for changing
-dependencies. Do not call a candidate commit causal merely because it is recent.
+Use history or bisection when a regression interval and reliable reproducer
+exist. Preserve the worktree, use isolated checkouts when needed, and account
+for changing dependencies. Do not call a candidate commit causal merely because
+it is recent.
 
 ## Fix and verify
 

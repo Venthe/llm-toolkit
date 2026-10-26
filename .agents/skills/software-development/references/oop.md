@@ -6,15 +6,15 @@ data records, and procedural modules remain appropriate where they are clearer.
 ## Model behavior and invariants
 
 Place rules with the concept that owns them. Constructors and operations should
-protect valid states; callers should not need to remember an undocumented sequence
-of setters. Use value objects when they make a meaningful domain distinction or
-centralize validation, not to wrap every primitive mechanically.
+protect valid states; callers should not need to remember an undocumented
+sequence of setters. Use value objects when they make a meaningful domain
+distinction or centralize validation, not to wrap every primitive mechanically.
 
 Avoid both primitive obsession and message obsession. Replace primitives with a
-domain type when it names a real concept, makes invalid states harder to express,
-or centralizes its rules; do not create a type merely to avoid a primitive.
-Likewise, keep behavior with the concept that owns it, while avoiding chains of
-small forwarding objects that obscure useful behavior.
+domain type when it names a real concept, makes invalid states harder to
+express, or centralizes its rules; do not create a type merely to avoid a
+primitive. Likewise, keep behavior with the concept that owns it, while avoiding
+chains of small forwarding objects that obscure useful behavior.
 
 Keep mutable state private and consider defensive copies or immutable values at
 ownership boundaries. Data transfer objects can appropriately carry data without
@@ -29,8 +29,9 @@ business behavior, except for deliberately simple transport or persistence data.
 ## Contracts and variation
 
 Use interfaces to describe a client-relevant capability or external boundary.
-Avoid exposing methods a client does not need merely to mirror an implementation.
-Prefer explicit dependencies over hidden service lookup or global mutable state.
+Avoid exposing methods a client does not need merely to mirror an
+implementation. Prefer explicit dependencies over hidden service lookup or
+global mutable state.
 
 Inheritance requires substitutability: a subtype must preserve the promises
 clients rely on, including failure behavior and invariants. Prefer composition
@@ -41,10 +42,16 @@ and lifecycle. Do not introduce a strategy hierarchy for hypothetical variation.
 
 - Whether objects protect their own invariants.
 - Whether behavior is located with the data/concept it belongs to.
-- Whether inheritance represents a genuine substitutable relationship rather than code reuse.
-- Whether interfaces represent a client-relevant contract rather than implementation camouflage.
-- Whether value objects or domain types would make invalid states harder to represent.
-- Whether composition would simplify a complicated inheritance or dependency structure.
-- Whether static/global helpers conceal dependencies or merely package genuinely pure operations.
+- Whether inheritance represents a genuine substitutable relationship rather
+  than code reuse.
+- Whether interfaces represent a client-relevant contract rather than
+  implementation camouflage.
+- Whether value objects or domain types would make invalid states harder to
+  represent.
+- Whether composition would simplify a complicated inheritance or dependency
+  structure.
+- Whether static/global helpers conceal dependencies or merely package genuinely
+  pure operations.
 
-Avoid using SOLID as a numerical scorecard. Use the principles to explain concrete coupling, cohesion, substitutability, or dependency problems.
+Avoid using SOLID as a numerical scorecard. Use the principles to explain
+concrete coupling, cohesion, substitutability, or dependency problems.

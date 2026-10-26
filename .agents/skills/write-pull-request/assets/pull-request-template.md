@@ -14,8 +14,10 @@
 
 ## Risks and compatibility
 
-<Describe material risks, compatibility effects, migration, rollout, or rollback considerations. Omit this section when none apply.>
+<Describe material risks, compatibility effects, migration, rollout, or rollback
+considerations. Omit this section when none apply.>
 
 ## Related work
 
-<Verified issue, ticket, ADR, or design links. Omit this section when none are relevant.>
+<Verified issue, ticket, ADR, or design links. Omit this section when none are
+relevant.>
