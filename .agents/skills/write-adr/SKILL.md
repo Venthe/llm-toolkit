@@ -1,5 +1,5 @@
 ---
-name: adr
+name: write-adr
 description: Draft, review, or update Architecture Decision Records for significant technical choices. Use when recording decision context, alternatives, rationale, consequences, or the supersession of an earlier ADR; do not create records for ordinary implementation details unless requested.
 ---
 
