@@ -47,7 +47,7 @@ of the explicitly requested optional worktree flow.
    completed step against its requirement and inspect the diff before committing
    that coherent step. The explicit `$implement` request includes authorization
    for these task commits. Use [write-commit-message](../write-commit-message/SKILL.md)
-   and [version-control](../version-control/SKILL.md) to commit only intended
+   and [version-control](../git-version-control/SKILL.md) to commit only intended
    task files. If repository policy prohibits commits, stop and report the conflict.
 5. **Review and finish.** After the steps, run relevant full checks, inspect the
    complete diff, and conduct a requirements-based code review using

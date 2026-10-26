@@ -6,8 +6,8 @@ optional flow ends by merging the completed task branch back into the branch
 that was current when the flow started.
 
 Use the repository's documented worktree convention when present. The
-version-control skill's [Git workflow](../../version-control/references/git-workflow.md)
-and [review targets](../../version-control/references/review-targets.md) govern
+version-control skill's [Git workflow](../../git-version-control/references/git-workflow.md)
+and [review targets](../../git-version-control/references/review-targets.md) govern
 state inspection and preservation.
 
 ## Before creation

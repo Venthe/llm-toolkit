@@ -29,8 +29,8 @@ that scope. Otherwise use inspection-only review. Respect explicit no-execution
 constraints. Neither review mode permits shared-service mutations, destructive
 fixtures, or deployments merely because they are part of a test command.
 
-For Git work, follow [version-control](../version-control/SKILL.md). For a worktree or
-commit review, read [target selection](../version-control/references/review-targets.md)
+For Git work, follow [version-control](../git-version-control/SKILL.md). For a worktree or
+commit review, read [target selection](../git-version-control/references/review-targets.md)
 to include relevant untracked files and handle root commits, merges, and missing
 ancestry. Inspect surrounding code from the reviewed revision. Reuse the established
 mode and scope when consulting companion skills; a link does not turn review into

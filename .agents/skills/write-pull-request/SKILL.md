@@ -9,7 +9,7 @@ Create a clear, evidence-based pull request that helps reviewers understand the 
 
 ## Establish the PR scope
 
-1. Read applicable `AGENTS.md` instructions and inspect Git state before making changes. Follow [version control](../version-control/SKILL.md) and its [target-selection guidance](../version-control/references/review-targets.md) when selecting the branch comparison.
+1. Read applicable `AGENTS.md` instructions and inspect Git state before making changes. Follow [version control](../git-version-control/SKILL.md) and its [target-selection guidance](../git-version-control/references/review-targets.md) when selecting the branch comparison.
 2. Establish the intended base and head from the request, repository configuration, and available remote or hosting metadata. Do not assume `main`, guess a base, or claim a remote PR was inspected when no such access is available.
 3. Inspect the complete relevant change: the base-to-head diff, commit history for context, and staged, unstaged, and untracked changes separately. Determine which changes will actually be included in the PR. Do not silently describe local uncommitted work as part of a branch that does not contain it.
 4. Identify unrelated or mixed concerns, generated files, accidental changes, secrets, and compatibility implications. Report scope concerns; do not split commits, discard changes, or rewrite history unless explicitly requested.

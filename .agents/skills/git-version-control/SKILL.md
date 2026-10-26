@@ -1,5 +1,5 @@
 ---
-name: version-control
+name: git-version-control
 description: Inspect Git state and history, manage branches and conflicts, stage changes, draft or review commit messages, and perform requested commits. Use for Git operations or commit-message work; the bundled procedures currently cover Git.
 ---
 
