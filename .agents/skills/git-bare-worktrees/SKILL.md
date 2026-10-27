@@ -14,7 +14,7 @@ description: >-
 This workflow is opt-in. Activate it only when the user explicitly invokes this
 skill or clearly requests a bare-repository/worktree layout, for example:
 
-- `/Git clone branches dev,prod as worktrees`
+- `clone <url> branches dev,prod as worktrees`
 - "Convert this repository to a bare repository with worktrees for main and
   develop."
 - "Convert the worktree layout back to one normal checkout."
