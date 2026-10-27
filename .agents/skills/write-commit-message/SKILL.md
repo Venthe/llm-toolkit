@@ -28,7 +28,7 @@ Repository-specific message conventions take precedence where they differ.
    rationale is unknown, write the supported change and omit invented
    motivation.
 
-## Seven message rules
+## Message rules
 
 1. **Separate the title and explanation.** If a body is useful, place one empty
    line after the subject; a simple change can stand on its subject alone.
@@ -44,7 +44,7 @@ Repository-specific message conventions take precedence where they differ.
    behavior, and relevant consequences. Avoid narrating edits already evident in
    the diff.
 
-These are the working defaults distilled from the linked article. Do not import
+These are the working defaults. Do not import
 its historical claims about particular editors or hosting interfaces as current
 tool requirements.
 
@@ -91,6 +91,7 @@ concerns, identify that scope problem without rewriting commits automatically.
 Compare the message against the actual target once more. Check subject grammar,
 length, capitalization, punctuation, body separation, wrapping, evidence, and
 required metadata. Ensure unstaged or unrelated changes did not enter the text.
+Prefer uppercase for the first letter of the subject line.
 
 For generation, return the final message in a plain text code block without a
 preface unless requested otherwise. For message review, identify concrete issues
