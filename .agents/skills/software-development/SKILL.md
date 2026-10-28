@@ -60,6 +60,7 @@ relevant to the behavior and boundaries at hand.
 | [Software testing](../software-testing/SKILL.md)                   | Selecting verification, adding regression protection, or assessing test quality                    |
 | [Software debugging](../software-debugging/SKILL.md)               | Reproducing failures and establishing root cause before selecting a fix                            |
 | [Java](references/java.md)                                         | Implementing or reviewing Java code                                                                |
+| [React](references/react.md)                                       | Implementing, refactoring, or reviewing React components and their responsibilities                 |
 | [Review procedure and reporting](references/reviewing.md)          | Producing findings for a review request                                                            |
 
 For other languages, use project conventions and add a language reference only

@@ -9,6 +9,36 @@ understandable without reconstructing hidden assumptions. Comments are useful
 when they explain why, constraints, invariants, or non-obvious external
 behavior; do not require comments to compensate for unclear code.
 
+### Order code as a step-down narrative
+
+Follow the Clean Code step-down rule: code should read like prose, moving from
+high-level intent to the details that implement it. Order functions and methods
+by their call relationships. Put a caller before its helpers, with dedicated
+helpers immediately below that caller in the order they are called. Place shared
+helpers below the callers that use them within the same module or class.
+
+For example, keep this reading order:
+
+```javascript
+const block1 = () => {
+  func1();
+  sharedFunc();
+};
+
+const func1 = () => {};
+
+const block2 = () => {
+  sharedFunc();
+};
+
+const sharedFunc = () => {};
+```
+
+Preserve language initialization requirements when reordering declarations.
+In this example, invoke the functions only after their dependencies have been
+initialized. For recursive call groups, keep related functions together and
+start with the entry point.
+
 ### Keep responsibilities cohesive
 
 A function/method/class/module should have a coherent reason for the behavior it
