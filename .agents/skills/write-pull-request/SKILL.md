@@ -34,7 +34,11 @@ committing, pushing, merging, or publishing it.
 5. Look for the target repository's PR template and contribution guidance first.
    Use them when present. Otherwise use the
    [default PR template](assets/pull-request-template.md), removing irrelevant
-   sections and replacing all placeholders.
+   sections and replacing all placeholders. Preserve the repository template's
+   headings, checklist wording, and useful links where applicable; remove
+   instructional examples. Check boxes only with evidence. Do not invent AI
+   usage levels, reviews, approvals, or CI status. Omit unknown ticket URLs
+   rather than leaving fabricated links or placeholders.
 
 ## Build the title and description
 
@@ -52,7 +56,11 @@ committing, pushing, merging, or publishing it.
 4. Describe validation using exact commands and observed outcomes when
    available. Separate passed checks, failed checks, checks not run, and
    environmental blockers. Never infer that tests passed from their presence, a
-   green historical run, or a successful build of a different revision.
+   green historical run, or a successful build of a different revision. Name
+   the tested revision when relevant; checks on a completed stack do not prove
+   that each intermediate branch passed. Distinguish mocks and pending backend
+   integration from completed behavior, and suggested testing from performed
+   checks. Do not run tests solely to draft a description.
 5. Include risks, migrations, rollout or rollback notes, security effects,
    compatibility concerns, and follow-up work only when material and supported
    by evidence. Link known related work using verified identifiers and URLs; do
@@ -90,7 +98,8 @@ MCP implementation mechanics in the PR content.
 ## Output
 
 For a draft, return the proposed title and complete Markdown body, normally
-without a preface. For a repository-file request, follow the repository's
+without a preface. When copyable plain Markdown is requested, use one fenced
+`markdown` block per PR. For a repository-file request, follow the repository's
 established location and naming. For an explicitly requested remote action,
 report the resulting PR link or the actual failure, along with the exact checks
 and unresolved limitations. Never claim a PR was created or updated without
