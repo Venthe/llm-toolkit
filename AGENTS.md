@@ -5,7 +5,7 @@
 - Read applicable repository instructions before changing files. More specific
   directory instructions apply within their scope; user requests and higher
   priority runtime instructions take precedence.
-- Inspect the available skill catalog or list `.agents/skills/*/SKILL.md` and
+- Inspect the available skill catalog or list `skills/*/SKILL.md` and
   their descriptions. Read the full entrypoint for each relevant skill before
   using it; load linked references only when their stated condition applies.
 - Use the runtime's actual tools. Do not invent tool names, skill availability,
@@ -42,8 +42,8 @@
 
 ## Maintain this toolkit
 
-- Keep reusable skills in `.agents/skills/<name>/SKILL.md`. Use the
-  [skill-writing skill](.agents/skills/skill-writing/SKILL.md) when changing
+- Keep reusable skills in `skills/<name>/SKILL.md`. Use the
+  [skill-writing skill](skills/skill-writing/SKILL.md) when changing
   them.
 - Keep entrypoints focused on selection, core workflow, constraints, and output.
   Put conditional detail in `references/`, executable helpers in `scripts/`, and

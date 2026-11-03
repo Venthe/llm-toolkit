@@ -28,13 +28,13 @@ scripts are never executed. Runtime-specific UI metadata is not validated.
 Install the declared dependency in an environment you manage, when needed:
 
 ```text
-python -m pip install -r .agents/skills/skill-writing/scripts/requirements.txt
+python -m pip install -r skills/skill-writing/scripts/requirements.txt
 ```
 
 From the repository root, check skills and repository documentation:
 
 ```text
-python .agents/skills/skill-writing/scripts/validate_skills.py .agents/skills --docs README.md AGENTS.md
+python skills/skill-writing/scripts/validate_skills.py skills --docs README.md AGENTS.md
 ```
 
 To check a single skill, replace `../..` with its directory. Linked companion

@@ -38,7 +38,7 @@ description: >-
 From this repository's root, with Python 3.10+ and PyYAML 6.x installed:
 
 ```text
-python .agents/skills/skill-writing/scripts/validate_skills.py .agents/skills --docs README.md AGENTS.md
+python skills/skill-writing/scripts/validate_skills.py skills --docs README.md AGENTS.md
 ```
 
 For another collection, supply its directory, or a single skill directory. The
@@ -53,7 +53,7 @@ changing the validator, run its
 [regression tests](scripts/test_validate_skills.py):
 
 ```text
-python -B -m unittest discover -s .agents/skills/skill-writing/scripts -p "test_*.py"
+python -B -m unittest discover -s skills/skill-writing/scripts -p "test_*.py"
 ```
 
 ## Constraints

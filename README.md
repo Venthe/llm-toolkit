@@ -7,13 +7,13 @@ supporting resources. There is no application or background service to run.
 ## Navigate the repository
 
 Start with [AGENTS.md](AGENTS.md), then browse
-[.agents/skills/](.agents/skills/). Each directory's `SKILL.md` describes its
+[skills/](skills/). Each directory's `SKILL.md` describes its
 purpose, when to use it, and how to load supporting material. The directory
 layout is the source of truth for available skills; this README intentionally
 does not duplicate that inventory.
 
 ```text
-.agents/skills/<skill-name>/
+skills/<skill-name>/
     SKILL.md           Selection metadata and core workflow
     references/        Topic-specific guidance, when needed
     scripts/           Executable helpers, when needed
@@ -41,8 +41,8 @@ imply permission to commit, publish, or implement a proposal.
 
 ## Maintain and validate
 
-Use [skill-writing](.agents/skills/skill-writing/SKILL.md) when changing skills.
-Its [validation guide](.agents/skills/skill-writing/references/validation.md)
+Use [skill-writing](skills/skill-writing/SKILL.md) when changing skills.
+Its [validation guide](skills/skill-writing/references/validation.md)
 documents prerequisites, commands, checks, and limitations.
 
 Validate after editing metadata, moving resources, or changing local links.
@@ -59,14 +59,14 @@ checked with markdownlint-cli2 0.17.2. Run these commands from the repository
 root:
 
 ```text
-npx --yes prettier@3.5.3 --check "*.md" ".agents/**/*.md"
-npx --yes markdownlint-cli2@0.17.2 "*.md" ".agents/**/*.md"
+npx --yes prettier@3.5.3 --check "*.md" "skills/**/*.md" "prompts/**/*.md"
+npx --yes markdownlint-cli2@0.17.2 "*.md" "skills/**/*.md" "prompts/**/*.md"
 ```
 
 To apply the formatter:
 
 ```text
-npx --yes prettier@3.5.3 --write "*.md" ".agents/**/*.md"
+npx --yes prettier@3.5.3 --write "*.md" "skills/**/*.md" "prompts/**/*.md"
 ```
 
 On Windows PowerShell systems that block `npx.ps1`, use `npx.cmd` in place of
