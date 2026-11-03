@@ -7,6 +7,10 @@ Apply these gates to every implementation-plan step. Read the existing
 [review reporting](../../software-development/references/reviewing.md) as their
 conditions apply. This reference coordinates them; it does not replace them.
 
+For mechanical edits, keep the record and checks proportionate to risk. Follow
+the entrypoint's task-state and artifact rules; do not turn a small rename into
+a new test project or stage local implementation records.
+
 ## Before a step
 
 - Restate the step's observable outcome and acceptance evidence.

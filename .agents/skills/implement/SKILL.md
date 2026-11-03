@@ -40,10 +40,14 @@ of the explicitly requested optional worktree flow.
    context and [software testing](../software-testing/SKILL.md) for
    verification. Write a concise, ordered plan with small independently
    verifiable steps, exact likely files, behavior, tests, lint/build checks, and
-   dependencies. Save it in the project's established plan location when one
-   exists; otherwise use a clearly named task plan in the checkout used for
-   implementation. Review the plan for complete request coverage and unnecessary
-   work. The `$implement` request authorizes proceeding with the plan; do not
+   dependencies. Store temporary plans and verification records under
+   `.implementation/` by default, respecting an existing user-level Git exclusion.
+   If the directory is not ignored, use an untracked local exclusion appropriate
+   to the authorized scope; do not change global Git configuration implicitly.
+   Do not stage these records. Follow an explicit project/user location instead
+   when required. Version durable documentation only when requested or when it
+   serves repository users. Review the plan for complete request coverage and
+   unnecessary work. The `$implement` request authorizes proceeding with the plan; do not
    pause for a second approval unless a material ambiguity or safety issue
    remains. See the [workflow model](references/workflow-model.md) for this
    adaptation.
@@ -67,6 +71,26 @@ of the explicitly requested optional worktree flow.
    unverified; report blockers and residual gaps. In the optional worktree flow,
    finish the merge-back described in its reference. Do not push, publish, or
    remove the auxiliary worktree unless requested.
+
+## Persistent task state and proportional execution
+
+Keep a compact task record: current scope, accepted conventions, validation mode,
+commit authorization, push authorization, and stopping point. Carry these through
+related implementation follow-ups without requiring the user to invoke the skill
+again. An explicit pause such as "stop before pushing" is a completion condition.
+A later request can change the validation mode: "skip tests" during iteration
+must not override a subsequent request to run them.
+
+Scale the plan and gates to the change. A low-risk mechanical edit can use a brief
+inspect-edit-check-review-commit cycle with direct checks rather than artificial
+TDD or an elaborate plan. Behavioral changes require meaningful regression
+evidence. Perform the review pass before committing so established conventions
+are checked without repeated user corrections.
+
+Reclassify each request before acting. Review-only, drafting and retrospective
+requests do not inherit permission to edit, commit, or publish from earlier
+implementation work. Existing implementation authorization persists within scope;
+it does not silently expand to a new repository or unrelated task.
 
 ## Operating rules
 
