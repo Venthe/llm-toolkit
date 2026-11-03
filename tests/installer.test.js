@@ -81,3 +81,59 @@ test("source overlap is rejected", async (t) => {
     /overlap/i,
   );
 });
+
+test("link mode links each skill, copies prompts, and supports switching modes", async (t) => {
+  const { source, target, installed } = await fixture(t);
+  await fs.mkdir(path.join(source, "skills/second"));
+  await fs.writeFile(path.join(source, "skills/second/SKILL.md"), "second");
+  await manage("install", source, target, { link: true });
+  assert.equal(
+    (await fs.lstat(path.join(installed, "skills"))).isSymbolicLink(),
+    false,
+  );
+  for (const name of ["example", "second"]) {
+    assert.equal(
+      (await fs.lstat(path.join(installed, "skills", name))).isSymbolicLink(),
+      true,
+    );
+  }
+  assert.equal(
+    (
+      await fs.lstat(path.join(installed, "prompts/example.md"))
+    ).isSymbolicLink(),
+    false,
+  );
+  await fs.writeFile(path.join(source, "skills/example/SKILL.md"), "changed");
+  assert.equal(
+    await fs.readFile(path.join(installed, "skills/example/SKILL.md"), "utf8"),
+    "changed",
+  );
+  await manage("update", source, target, { link: true });
+  await manage("update", source, target);
+  assert.equal(
+    (await fs.lstat(path.join(installed, "skills/example"))).isSymbolicLink(),
+    false,
+  );
+  await manage("update", source, target, { link: true });
+  await manage("remove", source, target);
+  assert.equal(
+    await fs.readFile(path.join(source, "skills/example/SKILL.md"), "utf8"),
+    "changed",
+  );
+});
+
+test("broken skill links can be replaced without touching their targets", async (t) => {
+  const { source, target, installed, root } = await fixture(t);
+  await fs.mkdir(path.join(installed, "skills"), { recursive: true });
+  await fs.symlink(
+    path.join(root, "missing"),
+    path.join(installed, "skills/example"),
+    "junction",
+  );
+  await manage("install", source, target, { link: true });
+  assert.equal(
+    await fs.readFile(path.join(installed, "skills/example/SKILL.md"), "utf8"),
+    "original",
+  );
+  await assert.rejects(fs.stat(path.join(root, "missing")), { code: "ENOENT" });
+});

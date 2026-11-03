@@ -41,7 +41,7 @@ function inside(parent, child) {
   );
 }
 
-export async function manage(action, source, project) {
+export async function manage(action, source, project, { link = false } = {}) {
   if (!["install", "update", "remove"].includes(action))
     throw new Error("Expected install, update, or remove");
   source = path.resolve(source);
@@ -70,7 +70,11 @@ export async function manage(action, source, project) {
           : !info.isFile() || !name.endsWith(".md")
       )
         continue;
-      entries.push({ from, to: path.join(target, folder, name) });
+      entries.push({
+        from,
+        to: path.join(target, folder, name),
+        skill: folder === "skills",
+      });
     }
   }
   for (const name of ["LICENSE", "ATTRIBUTIONS.md"]) {
@@ -81,11 +85,11 @@ export async function manage(action, source, project) {
     }
   }
   // Preflight every selected destination before replacing any matching name.
-  for (const { to } of entries) {
+  for (const { to, skill } of entries) {
     if (!inside(target, to) || to === target)
       throw new Error(`Invalid destination: ${to}`);
-    await rejectLinks(to);
-    await validateTree(to);
+    await rejectLinks(path.dirname(to));
+    if (!(skill && (await stat(to))?.isSymbolicLink())) await validateTree(to);
     for (let parent = path.dirname(to); ; parent = path.dirname(parent)) {
       const info = await stat(parent);
       if (info && !info.isDirectory())
@@ -93,12 +97,19 @@ export async function manage(action, source, project) {
       if (parent === path.dirname(parent)) break;
     }
   }
-  for (const { from, to } of entries) {
+  for (const { from, to, skill } of entries) {
     // Paths are absolute, confined to target, and checked for links above.
-    await fs.rm(to, { recursive: true, force: true });
+    if ((await stat(to))?.isSymbolicLink()) await fs.unlink(to);
+    else await fs.rm(to, { recursive: true, force: true });
     if (action !== "remove") {
       await fs.mkdir(path.dirname(to), { recursive: true });
-      await fs.cp(from, to, { recursive: true });
+      if (link && skill)
+        await fs.symlink(
+          from,
+          to,
+          process.platform === "win32" ? "junction" : "dir",
+        );
+      else await fs.cp(from, to, { recursive: true });
     }
   }
   return entries.length;
@@ -108,13 +119,14 @@ async function main() {
   const { values, positionals } = parseArgs({
     options: {
       target: { type: "string" },
+      link: { type: "boolean", default: false },
       help: { type: "boolean", short: "h" },
     },
     allowPositionals: true,
   });
   if (values.help) {
     console.log(
-      "Usage: llm-toolkit <install|update|remove> [--target <project>]",
+      "Usage: llm-toolkit <install|update|remove> [--target <project>] [--link]",
     );
     return;
   }
@@ -122,7 +134,9 @@ async function main() {
     throw new Error("Specify install, update, or remove; use --help for usage");
   const source = fileURLToPath(new URL("../", import.meta.url));
   const project = path.resolve(values.target ?? process.cwd());
-  const count = await manage(positionals[0], source, project);
+  const count = await manage(positionals[0], source, project, {
+    link: values.link,
+  });
   console.log(
     `${positionals[0]}: ${count} entries in ${path.join(project, ".agents")}`,
   );

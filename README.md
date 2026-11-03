@@ -65,8 +65,8 @@ npx --yes --package . llm-toolkit install --target "$HOME"
 
 The installer copies all bundled skills into `<project>/.agents/skills/` and
 Markdown prompts into `<project>/.agents/prompts/`. It creates no symlinks or
-junctions. Skill identity is its directory name; prompt identity is its
-filename. Both `install` and `update` replace matching names completely,
+junctions by default. Skill identity is its directory name; prompt identity is
+its filename. Both `install` and `update` replace matching names completely,
 including local edits and extra files inside matching skill directories. Other
 names remain untouched. No installation manifest is required.
 
@@ -76,10 +76,26 @@ version are left alone. License and attribution files are copied into
 `.agents/llm-toolkit/` and removed by `remove`. Empty parent directories may
 remain.
 
-Linked destination paths are rejected so installation cannot modify a link's
-external target. Remove existing links manually before installing copies.
-Operations assume a single writer and are not transactional against disk errors
-or interruption. Prompt discovery varies by agent; prompts can be read by path.
+Add `--link` to link each skill separately into `.agents/skills/<skill-name>`:
+
+```powershell
+npx.cmd --yes --package . llm-toolkit install --target "$HOME" --link
+```
+
+The `.agents/skills` directory remains a regular directory. Prompts and license
+files are still copied. Windows uses directory junctions; other platforms use
+directory symlinks. Links point to the running package's skill directories, so
+use a persistent local checkout for this mode. With a remotely fetched package,
+links point into npm's cache and break if that cache is removed.
+
+Pass `--link` again on updates to keep link mode. Omit it to replace matching
+links with copies. Removal unlinks matching skills without deleting their
+source; it does not require `--link`. Matching skill links, including broken
+links, can be replaced. Linked parent directories such as `.agents` or
+`.agents/skills` remain rejected so operations cannot modify an external
+directory through them. Operations assume a single writer and are not
+transactional against disk errors or interruption. Prompt discovery varies by
+agent; prompts can be read by path.
 
 This source layout follows [gh-stack](https://github.com/github/gh-stack)'s
 top-level `skills/` convention. Its installation uses
