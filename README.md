@@ -25,15 +25,16 @@ tools actually available to your agent. Short skills can remain self-contained.
 
 ## Use in another project
 
-Use Node.js 22 or newer and npm. From this checkout:
+Use Node.js 22 or newer and npm. From this checkout, link each skill to its
+local source:
 
 ```text
-npx --yes --package . llm-toolkit install --target /path/to/project
-npx --yes --package . llm-toolkit update --target /path/to/project
+npx --yes --package . llm-toolkit install --target /path/to/project --link
+npx --yes --package . llm-toolkit update --target /path/to/project --link
 npx --yes --package . llm-toolkit remove --target /path/to/project
 ```
 
-Once this commit is available on GitHub, you can run without cloning:
+To install copies from GitHub without cloning, omit `--link`:
 
 ```text
 npx --yes github:Venthe/llm-toolkit install --target /path/to/project
@@ -46,7 +47,8 @@ npm registry publication is required. See the
 
 On Windows, use `npx.cmd` if PowerShell blocks `npx.ps1`. Quote paths containing
 spaces. Without `--target`, the current directory is the project. For a direct
-local run, use `node bin/llm-toolkit.js install --target /path/to/project`.
+local run, use
+`node bin/llm-toolkit.js install --target /path/to/project --link`.
 
 To install into `<home>/.agents` from this checkout, pass the home directory as
 the target; the installer appends `.agents` automatically.
@@ -54,13 +56,13 @@ the target; the installer appends `.agents` automatically.
 PowerShell:
 
 ```powershell
-npx.cmd --yes --package . llm-toolkit install --target "$HOME"
+npx.cmd --yes --package . llm-toolkit install --target "$HOME" --link
 ```
 
 Bash or Zsh:
 
 ```sh
-npx --yes --package . llm-toolkit install --target "$HOME"
+npx --yes --package . llm-toolkit install --target "$HOME" --link
 ```
 
 The installer copies all bundled skills into `<project>/.agents/skills/` and
@@ -119,7 +121,7 @@ authenticated GitHub CLI with `gh skill install` support.
 
 ```powershell
 # My toolkit: skills and prompts
-npx.cmd --yes --package . llm-toolkit install --target "$HOME"
+npx.cmd --yes --package . llm-toolkit install --target "$HOME" --link
 
 # gh-stack: skill only
 gh skill install github/gh-stack gh-stack --dir "$HOME/.agents/skills" --force
