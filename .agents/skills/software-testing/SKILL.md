@@ -20,7 +20,9 @@ meaningful regression. Follow the project's toolchain and user constraints.
    verified.
 3. Read [test design and verification](references/test-design.md) when choosing
    test levels, assertions, doubles, or execution scope. For Java tests, also
-   read [Java testing](references/java.md).
+   read [Java testing](references/java.md). For layout comparisons, clipping,
+   scrolling, popovers, or responsive interaction, read
+   [browser verification](references/browser-verification.md).
 4. Select representative success, boundary, and failure cases according to risk.
    Prefer tests that fail for a realistic regression and tolerate harmless
    implementation changes. Avoid arbitrary coverage or test-count targets.

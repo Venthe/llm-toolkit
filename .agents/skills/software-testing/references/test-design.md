@@ -70,6 +70,11 @@ Report the exact checks, tested revision/state, and outcomes. Distinguish tests
 inspected from tests executed. A blocked integration environment leaves a gap;
 it does not turn an isolated unit test into an integration result.
 
+For browser-dependent evidence, follow
+[browser verification](browser-verification.md). Associate evidence with the
+revision and tested flows; do not transfer results from a completed stack to
+intermediate branches without qualification.
+
 ## Review existing tests
 
 Ask whether a realistic regression would fail the test and whether a harmless
