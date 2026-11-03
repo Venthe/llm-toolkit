@@ -25,6 +25,21 @@ Example:
 > possible future candidate if database independence is an intended property;
 > the current repository does not establish that requirement.
 
+## UI ownership and style review
+
+For React changes, apply the [React guidance](react.md) in the review pass before
+committing: check ownership, composition, domain names, component boundaries and
+callback readability. Reuse rules already documented there rather than creating
+a second standards checklist. This may be self-review; do not assume a separate
+agent or claim independent review.
+
+Check changed custom class references against CSS definitions and code/test
+consumers, including CSS modules and generated styles. Remove a class only after
+establishing that it has no purpose; a selector used by tests or behavior is not
+unused merely because no CSS rule exists. Flag missing CSS-module properties.
+For clipping, scrolling, popup interaction or responsive layout, use browser
+evidence when execution is authorized; otherwise identify the verification gap.
+
 ## Verification
 
 Record exact commands and outcomes. Separate passed checks, failed checks,

@@ -3,17 +3,21 @@
 Read when implementing, refactoring, or reviewing React components. Apply the
 [clean-code guidance](clean-code.md), including the step-down reading order.
 
-## Separate presentation from orchestration
+## Assign ownership by domain responsibility
 
-Split components into presentational ("dumb") and container ("smart")
-responsibilities. Presentational components receive data and callbacks through
-props and render the UI. Containers own data access, application state, business
-decisions, and coordination, passing the values and actions the UI needs.
+A component owns the data and behavior needed for its domain responsibility.
+A parent that selects a view should not also manage that view's requests,
+navigation, or submission guards. A policy modal can fetch its policy; an
+application modal can guard dismissal while submitting. Split presentation from
+orchestration when it creates a useful boundary, not merely because data access
+is present. Hooks can encapsulate orchestration without requiring another
+wrapper component.
 
-Keep this separation meaningful: extract a component around a coherent UI or
-domain responsibility. Local presentation state does not by itself require a
-container. Hooks can encapsulate orchestration logic while a container composes
-the presentation.
+Each translated subcomponent should obtain its own translation hook rather than
+receive a translator as a prop. Keep reusable infrastructure hooks independent
+of domain lookup: a telemetry hook receives typed event context from its caller
+instead of discovering membership itself. Preserve meaningful shared state and
+existing contracts when deciding where ownership belongs.
 
 ## Name components for their domain function
 
@@ -43,6 +47,31 @@ Keep semantic variants and behavior props when they represent real component
 states or domain choices. This rule applies to contextual presentation; it does
 not require replacing meaningful APIs with arbitrary styling overrides or
 exposing every DOM prop.
+
+## Choose composition deliberately
+
+Child slots are an API design choice, not a default preference. Assess the
+consumer's composition needs and existing contracts before choosing slots,
+configuration objects, or explicit props. When using slots, accept ordinary
+React children and relevant styling props on the slot itself; avoid redundant
+pairs such as footer/footerClassName when the footer child can own className.
+
+Keep small, tightly coupled components together. Extract files for independent
+domain responsibilities or reuse, not one file per component. Inline prop types
+for small private components; retain named types when shared or complex. Prefer
+named, const-backed domain actions for meaningful event handlers. Trivial mapping
+and render callbacks can remain inline. Update component, test and stylesheet
+names when their responsibility changes.
+
+Prefer explicit return branches over accumulating JSX in intermediate variables.
+Use intermediate variables for meaningful derived state. Do not replace a useful
+reducer merely to avoid reducers; remove effect/reducer synchronization when
+ordinary derived state and event transitions express the behavior more clearly.
+Remove redundant fragments and styling-only wrappers when existing component
+props express the same layout. Keep fragments needed for sibling returns and
+wrappers with real layout or semantic responsibilities. Follow the project's
+conditional-brace convention; these guidelines do not imply a blanket ban on
+reducers, fragments, separate files, or inline functions.
 
 ## Prefer arrow functions and step-down order
 
