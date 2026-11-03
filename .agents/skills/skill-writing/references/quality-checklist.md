@@ -46,6 +46,10 @@ For this collection, useful cases include:
 - Draft an ADR for a choice still under discussion: preserve proposed status and
   do not supersede an accepted predecessor until a replacement is accepted.
 
+When updating implementation, verification, or PR workflows, also use
+[session regression cases](session-regression-cases.md) to select relevant
+failure scenarios. Treat them as evaluation fixtures, not universal design rules.
+
 Use isolated fixtures where execution might affect data. Record scope, inputs,
 observed outcomes, and limitations. Do not claim behavioral validation merely
 because frontmatter and links pass. Refine demonstrated failures instead of
