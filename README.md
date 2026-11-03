@@ -111,6 +111,34 @@ automatic skill discovery can read an entrypoint by path when instructed. Skills
 provide guidance within the task's authorization; drafting or reviewing does not
 imply permission to commit, publish, or implement a proposal.
 
+## My skills
+
+Install these into the home `.agents` directory without interactive prompts. Run
+the toolkit command from this checkout. Requires Node.js 22+, npm, and an
+authenticated GitHub CLI with `gh skill install` support.
+
+```powershell
+# My toolkit: skills and prompts
+npx.cmd --yes --package . llm-toolkit install --target "$HOME"
+
+# gh-stack: skill only
+gh skill install github/gh-stack gh-stack --dir "$HOME/.agents/skills" --force
+
+# Playwright: skill only, without a global CLI installation
+npx.cmd --yes --package @playwright/cli@latest playwright-cli install --skills=agents --global
+```
+
+In Bash or Zsh, use `npx` instead of `npx.cmd`. Re-run these commands to refresh
+the installed skills; matching local content may be overwritten.
+
+The [gh-stack command](https://cli.github.com/manual/gh_skill_install) installs
+its instructions, not the `gh stack` extension. Playwright's
+[`--global` skill option](https://playwright.dev/agent-cli/skills) selects the
+home directory; it does not globally install the CLI. `npx` downloads the CLI
+into npm's cache for the command. This mode skips workspace initialization. To
+run Playwright later without a global installation, use
+`npx --yes --package @playwright/cli@latest playwright-cli <command>`.
+
 ## Maintain and validate
 
 Use [skill-writing](skills/skill-writing/SKILL.md) when changing skills. Its
