@@ -29,7 +29,10 @@ Example:
 
 For React changes, apply the [React guidance](react.md) in the review pass before
 committing: check ownership, composition, domain names, component boundaries and
-callback readability. Reuse rules already documented there rather than creating
+callback readability. For TSX, check [TypeScript contracts](typescript.md); when
+views are passed as components or a shell persists across views, check
+[composition and lifecycle](react-composition-lifecycle.md). Verify the actual
+producer/consumer contract before approving an abstraction. Reuse rules already documented there rather than creating
 a second standards checklist. This may be self-review; do not assume a separate
 agent or claim independent review.
 
